@@ -71,11 +71,17 @@ export default {
 								// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
 								// 可以直接通过 response.data 取key-value
 								// 坑一：这里不能直接使用 this 指针，不然找不到对象
+								// if(window.localStorage){
+								// alert('This browser supports localStorage');
+								// }else{
+								// alert('This browser does NOT support localStorage');
+								// }
 								var msg = response.data[0].username;
 								var msg_ = response.data[0].password;
+								window.localStorage.token = response.data;
 								// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
 								that.serverResponse = msg;
-								console.log(response.data);}).catch(function (error) {
+								console.log(window.localStorage.token);}).catch(function (error) {
 														alert(error);})
 
 							// axios.get(path).then(function (response) {
