@@ -58,41 +58,38 @@ export default {
 				param.append('username', 'admin')
 				param.append('pwd', '123')
 				axios({
-                 url: 'http://127.0.0.1:5000/',
-                 method:'post',
-                 //发送格式为json
-                data:param,
-                // headers:
-                //        {
+                url: 'http://127.0.0.1:5000/',
+                method:'post',
+                //发送格式为json
+								data:param,
+								// headers:
+								//        {
 								// 				//  'Content-Type': 'application/json'
 								// 				 'Content-Type': 'text/plain;charset=UTF-8'
-                //        }
+								//        }
                }).then(function (response) {
-					// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
-					// 可以直接通过 response.data 取key-value
-					// 坑一：这里不能直接使用 this 指针，不然找不到对象
-					var msg = response.data.username;
-					var msg_ = response.data.password;
-					// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
-					that.serverResponse = msg;
+								// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
+								// 可以直接通过 response.data 取key-value
+								// 坑一：这里不能直接使用 this 指针，不然找不到对象
+								var msg = response.data[0].username;
+								var msg_ = response.data[0].password;
+								// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
+								that.serverResponse = msg;
+								console.log(response.data);}).catch(function (error) {
+														alert(error);})
 
-					console.log(msg+":"+msg_);
-				}).catch(function (error) {
-					alert(error);
-				})
+							// axios.get(path).then(function (response) {
+							// 	// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
+							// 	// 可以直接通过 response.data 取key-value
+							// 	// 坑一：这里不能直接使用 this 指针，不然找不到对象
+							// 	var msg = response.data.msg;
+							// 	// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
+							// 	that.serverResponse = msg;
 
-				// axios.get(path).then(function (response) {
-				// 	// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
-				// 	// 可以直接通过 response.data 取key-value
-				// 	// 坑一：这里不能直接使用 this 指针，不然找不到对象
-				// 	var msg = response.data.msg;
-				// 	// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
-				// 	that.serverResponse = msg;
-
-				// 	console.log(response.data);
-				// }).catch(function (error) {
-				// 	alert(error);
-				// })
+							// 	console.log(response.data);
+							// }).catch(function (error) {
+							// 	alert(error);
+							// })
     },
 
 		m_alert(width){
