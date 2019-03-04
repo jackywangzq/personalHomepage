@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
     }
   }
   else { // 如果不需要权限校验，直接进入路由界面
-    // next();
+      next();
   }
 });
 
