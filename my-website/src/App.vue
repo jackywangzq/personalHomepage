@@ -2,7 +2,6 @@
 
   <div id="app" class="container-fluid" style="margin-top: 0px; padding: 0px;">
   	<div class="row" >
-			  
 			  <aside id="aside" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="background-color: white; font-size: 16px; padding-top: 25px; " >
 						<button type="button" @click="getData()" value="测试">测试</button>		  
 			  	<div id="aside_nav" class="row" >
@@ -20,13 +19,13 @@
 			  	<router-view style=""></router-view>
 			 </main>			 
 		</div>
-
 	</div>
 
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import http from './http';  //此处问http文件的路径
 import HelloWorld from './components/HelloWorld'
 import MyWebsitelogo from './components/my-website-logo'
 import MyWebsitenav from './components/my-website-nav'
@@ -57,7 +56,7 @@ export default {
 				let param = new URLSearchParams()
 				param.append('username', 'admin')
 				param.append('pwd', '123')
-				axios({
+					this.$http({
                 url: 'http://127.0.0.1:5000/',
                 method:'post',
                 //发送格式为json
@@ -83,6 +82,30 @@ export default {
 								that.serverResponse = msg;
 								console.log(window.localStorage.token);}).catch(function (error) {
 														alert(error);})
+		},
+			// 	this.$http.post(configIp.apiConfig.user.login, this.param). then(res => {
+      //       if (res.data != null) {
+      //         this.$Message.success('登陆成功');
+      //         //全局存储token
+      //         window.localStorage["token"] = JSON.stringify(res.data);
+      //       } else {
+      //         this.$Message.error('登录失败');
+      //         this.forgetPassword = true;
+      //       }
+      //     }).catch(err => {
+      //     console.log("登录失败");
+      //   })
+      // },
+
+								// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
+								// 可以直接通过 response.data 取key-value
+								// 坑一：这里不能直接使用 this 指针，不然找不到对象
+								// if(window.localStorage){
+								// alert('This browser supports localStorage');
+								// }else{
+								// alert('This browser does NOT support localStorage');
+								// }
+
 
 							// axios.get(path).then(function (response) {
 							// 	// 这里服务器返回的 response 为一个 json object，可通过如下方法需要转成 json 字符串
@@ -96,7 +119,6 @@ export default {
 							// }).catch(function (error) {
 							// 	alert(error);
 							// })
-    },
 
 		m_alert(width){
 			console.log(width);
