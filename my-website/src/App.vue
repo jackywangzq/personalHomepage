@@ -75,13 +75,14 @@ export default {
 								// }else{
 								// alert('This browser does NOT support localStorage');
 								// }
+								console.log("sucess")
 								var msg = response.data[0].username;
 								var msg_ = response.data[0].password;
 								window.localStorage.token = response.data;
 								// 坑二：这里直接按类型解析，若再通过 JSON.stringify(msg) 转，会得到带双引号的字串
 								that.serverResponse = msg;
 								console.log(window.localStorage.token);}).catch(function (error) {
-														alert(error);})
+														console.log(error);})
 		},
 			// 	this.$http.post(configIp.apiConfig.user.login, this.param). then(res => {
       //       if (res.data != null) {
