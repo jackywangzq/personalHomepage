@@ -25,7 +25,6 @@
 
 <script>
 // import axios from 'axios';
-import http from './http';  //此处问http文件的路径
 import HelloWorld from './components/HelloWorld'
 import MyWebsitelogo from './components/my-website-logo'
 import MyWebsitenav from './components/my-website-nav'

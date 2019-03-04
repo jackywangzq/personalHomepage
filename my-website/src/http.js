@@ -19,9 +19,9 @@ axios.interceptors.request.use(
     }
     
   },
-  // err => {
-  //   return Promise.reject(err);
-  // }
+  err => {
+    return Promise.reject(err);
+  }
 );
 
 // http response 拦截器
@@ -35,7 +35,6 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
-    console.log("error")
     return Promise.reject(error);
   }
 );

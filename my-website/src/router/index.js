@@ -24,11 +24,17 @@ export default new Router({
     {
     	path: '/MyWebsitemaincase',
       name: 'MyWebsitemaincase',
+      meta: {
+        requireAuth: true,  // 该路由项需要权限校验
+      },
       component: MyWebsitemaincase
     },
     {
     	path: '/MyWebsitemainintroduction',
       name: 'MyWebsitemainintroduction',
+      meta: {
+        requireAuth: true,  // 该路由项需要权限校验
+      },
       component: MyWebsitemainintroduction
     },
     {
