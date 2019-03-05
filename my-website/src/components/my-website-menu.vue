@@ -1,7 +1,7 @@
 <template>
-	<div class="col-lg-3 col-md-3">
+	<div class="col-lg-3 col-md-3 col-md-3">
 	<!--	<span class="glyphicon" v-bind:class="{ 'glyphicon-remove' : this.$store.state.data_, 'glyphicon-menu-hamburger': !this.$store.state.data_}" aria-hidden="true" @click="js_click()"><em>it’s me</em></span>-->
-		<span class="glyphicon" aria-hidden="true" @click="js_click()"><em>it’s me</em></span>
+		<span class="glyphicon" aria-hidden="true" @click="js_click()"><em>click it</em></span>
 	</div>
 </template>
 

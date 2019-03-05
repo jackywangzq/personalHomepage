@@ -3,15 +3,15 @@
   <div id="app" class="container-fluid" style="margin-top: 0px; padding: 0px;">
   	<div class="row" >
 			  <aside id="aside" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="background-color: white; font-size: 16px; padding-top: 25px; " >
-						<button type="button" @click="getData()" value="测试">测试</button>		  
+						<!-- <button type="button" @click="getData()" value="测试">测试</button>		   -->
 			  	<div id="aside_nav" class="row" >
-			  		<MyWebsitelogo> </MyWebsitelogo>
+			  		<!-- <MyWebsitelogo> </MyWebsitelogo> -->
 		  			<MyWebsitenav v-bind:class="{ 'aside_main_visiblity' : this.$store.state.data_ }" > </MyWebsiteNav>
 		  			<MyWebsitemenu> </MyWebsiteMenu>
 			  	</div>
 					<div id="aside_main" class="row" style="position: relative;" >		
-								<MyWebsitenavmain v-bind:class="{ 'aside_main_display' : this.$store.state.data_ }" style="position: absolute; left:50%; transform:translate(-60%,150px);"></MyWebsitenavmain>
-								<MyWebsiteMenumain v-bind:class="{ 'aside_main_display' : !this.$store.state.data_ }" style="position: absolute; left:50%; transform:translate(-60%,150px);"></MyWebsiteMenumain>	
+								<MyWebsitenavmain v-bind:class="{ 'aside_main_display' : this.$store.state.data_ }" style="position: absolute; padding-top:25%"></MyWebsitenavmain>
+								<MyWebsiteMenumain v-bind:class="{ 'aside_main_display' : !this.$store.state.data_ }" style="position: absolute; padding-top:25%"></MyWebsiteMenumain>	
 					</div>	
 		  	</aside>
 			 

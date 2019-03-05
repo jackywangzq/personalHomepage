@@ -1,5 +1,5 @@
 <template>
-	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left" >
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-1  col-md-offset-1  col-sm-offset-1" >
 			<!--<span class="glyphicon" v-bind:class="{'glyphicon glyphicon-menu-left': !back }" aria-hidden="true" @click="js_click($event)"></span>
 			<h4>{{titleTemp}}</h4>
 			<ul >
@@ -26,7 +26,7 @@
   		name: 'MyWebsitenavmain',
 		data: function () {
 		  return {
-		    	content : [{title:"个人简介",subTitle:["基本资料","技术特长","工作经历","教育经历"]},{title:"项目经验",subTitle:["客户欠费预测系统","联通ERP系统设计与实现","流媒体视频质量监测平台设计与实现","3G终端及网络研究"]},{title:"甜品案例",subTitle:["Html5+Css3","Bootstrap","Vue"]}],
+		    	content : [{title:"个人简介",subTitle:["基本资料","技术特长","工作经历","教育经历"]},{title:"项目经验",subTitle:["客户欠费预测系统","联通ERP系统设计与实现","流媒体视频质量监测平台设计与实现","3G终端及网络研究"]},{title:"甜品案例",subTitle:["token验证","websocket","Vue"]}],
 		    	i : 0,
 		    	titleTemp: "",
 		    	contentTemp : [],

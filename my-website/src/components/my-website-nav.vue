@@ -1,5 +1,5 @@
 <template>
-	<div class="col-lg-8 col-md-8 text-left "  >
+	<div class="col-lg-7 col-md-7  col-sm-7 col-lg-offset-1  col-md-offset-1  col-sm-offset-1 "  >
 		<ul class="list-inline">
 		  <!--<li v-for="(item, index) in data_content" @click="js_click($event,index)">{{data_content[index]}}</li>-->
 		 
