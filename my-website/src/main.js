@@ -35,6 +35,7 @@ router.beforeEach((to, from, next) => {
 
 const store = new Vuex.Store({
     state: {
+      login : false,
     	data_ : false,
     	data_1 : false,
     	data_2 : true,

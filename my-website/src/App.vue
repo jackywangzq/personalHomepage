@@ -1,7 +1,11 @@
 <template>
 
   <div id="app" class="container-fluid" style="margin-top: 0px; padding: 0px;">
-  	<div class="row" >
+		<div style="width:500px;height:500px;left:50%;top:50%;position:absolute;transform: translate(-50%, -50%);" v-bind:class="{ 'aside_main_display' : this.$store.state.login }">
+			<el-input id="username" v-model:value="username"></el-input>
+			<el-button @click="getData()">登陆</el-button>
+		</div>
+  	<div class="row" v-bind:class="{ 'aside_main_display' : !this.$store.state.login}" >
 			  <aside id="aside" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="background-color: white; font-size: 16px; padding-top: 25px; " >
 						<!-- <button type="button" @click="getData()" value="测试">测试</button>		   -->
 			  	<div id="aside_nav" class="row" >
@@ -44,17 +48,20 @@ export default {
   data: function () {
   return {
     clientHeight : document.documentElement.clientHeight,
-    menu_state : this.$store.state.menu_state,
+		menu_state : this.$store.state.menu_state,
+		username : 12,
+		login : this.$store.state.login,
   	}
   },
 	methods:{
 		getData(){
+			  console.log(this.username);
 				var that = this;
 				// 对应 Python 提供的接口，这里的地址填写下面服务器运行的地址，本地则为127.0.0.1，外网则为 your_ip_address
 				const path = 'http://127.0.0.1:5000/';
 				let param = new URLSearchParams()
-				param.append('username', 'admin')
-				param.append('pwd', '123')
+				param.append('username', this.username)
+				param.append('pwd', this.username)
 					this.$http({
                 url: 'http://127.0.0.1:5000/',
                 method:'post',
@@ -66,8 +73,15 @@ export default {
 								// 				 'Content-Type': 'text/plain;charset=UTF-8'
 								//        }
                }).then(function (response) {
-								console.log("sucess")
-								window.localStorage.token = response.data;
+								console.log(response.data.status);
+								console.log(response.data.token);
+								if(response.data.status == 1){
+									that.$store.state.login = true;
+								}
+								else{
+									that.$store.state.login = false;
+								}
+								window.localStorage.token = response.data.token;
 								console.log(window.localStorage.token);}).catch(function (error) {
 														console.log(error);})
 		},
