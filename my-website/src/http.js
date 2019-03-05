@@ -8,16 +8,12 @@ axios.defaults.baseURL = 'http://127.0.0.1:5000/';
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    localStorage.setItem("token","234");
     if (localStorage.token) { //判断token是否存在
       config.headers.Authorization = localStorage.token;  //将token设置成请求头
-      console.log(1234);
-      return config;
+      console.log("token存在");
     }
-    else{
-      console.log("error")
-    }
-    
+    console.log("token不存在");
+    return config;
   },
   err => {
     return Promise.reject(err);
@@ -27,15 +23,20 @@ axios.interceptors.request.use(
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
-    console.log(response.data);
     if (response.data === 999) {
-      router.replace('/');
+      router.replace({ //跳转到登录页面
+        path: '/HelloWorld',
+        query: { redirect: router.currentRoute.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
+      });
       console.log("token过期");
     }
-    return response;
+    else{
+      console.log("token正常");
+      return response;
+    }
   },
-  error => {
-    return Promise.reject(error);
-  }
+error => {
+  return Promise.reject(error);
+}
 );
 export default axios;

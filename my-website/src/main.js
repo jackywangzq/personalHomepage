@@ -16,7 +16,7 @@ Vue.use(Vuex);
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
-    if (!localStorage.token) {  // 获取当前的token是否存在
+    if (localStorage.token) {  // 获取当前的token是否存在
       console.log("token存在");
       next();
     } else {
