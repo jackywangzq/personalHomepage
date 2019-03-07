@@ -3,7 +3,7 @@
 		<ul class="list-inline">
 		  <!--<li v-for="(item, index) in data_content" @click="js_click($event,index)">{{data_content[index]}}</li>-->
 		 
-		   <li v-for="(item, index) in data_content" @click="js_click($event,index)"> <router-link class="nav" v-bind:to= "data_url[index]" tag="li" >{{data_content[index]}}</router-link></li>
+		   <li v-for="(item, index) in data_content" @click="js_click($event,index)"> <router-link class="nav" v-bind:to= "data_url[index]" tag="li" style="font-size:0.1rem">{{data_content[index]}}</router-link></li>
 		</ul>
 	</div>
 </template>

@@ -12,7 +12,7 @@
 			      <el-submenu v-bind:index="index" >
 			        <template slot="title" >
 			          <i v-bind:class="icon[i][index]"></i>
-			          <span @click="js_click($event,index)">{{contentTemp[index]}}</span>
+			          <span @click="js_click($event,index)" style="font-size:16px">{{contentTemp[index]}}</span>
 			        </template>
 			      </el-submenu>
 			    </el-menu>

@@ -1,15 +1,10 @@
 <template>
 
   <div id="app" class="container-fluid" style="margin-top: 0px; padding: 0px;">
-		<div style="width:500px;height:500px;left:50%;top:50%;position:absolute;transform: translate(-50%, -50%);" v-bind:class="{ 'aside_main_display' : this.$store.state.login }">
-			<el-input id="username" v-model:value="username"></el-input>
-			<el-button @click="getData()">登陆</el-button>
-		</div>
+		<Hello></Hello> 
   	<div class="row" v-bind:class="{ 'aside_main_display' : !this.$store.state.login}" >
 			  <aside id="aside" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="background-color: white; font-size: 16px; padding-top: 25px; " >
-						<!-- <button type="button" @click="getData()" value="测试">测试</button>		   -->
 			  	<div id="aside_nav" class="row" >
-			  		<!-- <MyWebsitelogo> </MyWebsitelogo> -->
 		  			<MyWebsitenav v-bind:class="{ 'aside_main_visiblity' : this.$store.state.data_ }" > </MyWebsiteNav>
 		  			<MyWebsitemenu> </MyWebsiteMenu>
 			  	</div>
@@ -30,6 +25,7 @@
 <script>
 // import axios from 'axios';
 import HelloWorld from './components/HelloWorld'
+import Hello from './components/Hello'
 import MyWebsitelogo from './components/my-website-logo'
 import MyWebsitenav from './components/my-website-nav'
 import MyWebsitemenu from './components/my-website-menu'
@@ -42,7 +38,7 @@ import MyWebsitemainPorExpe from './components/my-website-main-ProExpe'
 export default {
   name: 'App',
   
-  components: { HelloWorld:HelloWorld, MyWebsitelogo:MyWebsitelogo, MyWebsitenav:MyWebsitenav, MyWebsitemenu:MyWebsitemenu, MyWebsiteMenumain:MyWebsiteMenumain, MyWebsitenavmain:MyWebsitenavmain, MyWebsitemaincase:MyWebsitemaincase, MyWebsitemainintroduction:MyWebsitemainintroduction,MyWebsitemainPorExpe}, 
+  components: { Hello:Hello, HelloWorld:HelloWorld, MyWebsitelogo:MyWebsitelogo, MyWebsitenav:MyWebsitenav, MyWebsitemenu:MyWebsitemenu, MyWebsiteMenumain:MyWebsiteMenumain, MyWebsitenavmain:MyWebsitenavmain, MyWebsitemaincase:MyWebsitemaincase, MyWebsitemainintroduction:MyWebsitemainintroduction,MyWebsitemainPorExpe}, 
   
 
   data: function () {
@@ -52,64 +48,20 @@ export default {
 		username : 12,
 		login : this.$store.state.login,
   	}
-  },
+	},
+	
 	methods:{
-		getData(){
-			  console.log(this.username);
-				var that = this;
-				// 对应 Python 提供的接口，这里的地址填写下面服务器运行的地址，本地则为127.0.0.1，外网则为 your_ip_address
-				const path = 'http://127.0.0.1:5000/';
-				let param = new URLSearchParams()
-				param.append('username', this.username)
-				param.append('pwd', this.username)
-					this.$http({
-                url: 'http://127.0.0.1:5000/',
-                method:'post',
-                //发送格式为json
-								data:param,
-								// headers:
-								//        {
-								// 				//  'Content-Type': 'application/json'
-								// 				 'Content-Type': 'text/plain;charset=UTF-8'
-								//        }
-               }).then(function (response) {
-								console.log(response.data.status);
-								console.log(response.data.token);
-								if(response.data.status == 1){
-									that.$store.state.login = true;
-								}
-								else{
-									that.$store.state.login = false;
-								}
-								window.localStorage.token = response.data.token;
-								console.log(window.localStorage.token);}).catch(function (error) {
-														console.log(error);})
-		},
-			// 	this.$http.post(configIp.apiConfig.user.login, this.param). then(res => {
-      //       if (res.data != null) {
-      //         this.$Message.success('登陆成功');
-      //         //全局存储token
-      //         window.localStorage["token"] = JSON.stringify(res.data);
-      //       } else {
-      //         this.$Message.error('登录失败');
-      //         this.forgetPassword = true;
-      //       }
-      //     }).catch(err => {
-      //     console.log("登录失败");
-      //   })
-      // },
-			// 	console.log(response.data);
-			// }).catch(function (error) {
-			// 	alert(error);
-			// })
-
-		m_alert(width){
-			console.log(width);
-		},
 		handleScroll () {
     	document.getElementById("aside").style.marginTop = $(window).scrollTop()+'px';
-  },
-	
+		},
+
+		getRem(pwidth,prem){
+			var html = document.getElementsByTagName("html")[0];
+			var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+			html.style.fontSize = oWidth/pwidth*prem + "px";
+			console.log(document.body.clientWidth || document.documentElement.clientWidth);
+			console.log(html.style.fontSize);
+		},
 	},
 	
 	mounted(){
@@ -120,12 +72,14 @@ export default {
         that.clientHeight = `${document.documentElement.clientHeight}px`;
         document.getElementById("aside").style.height = that.clientHeight;
         console.log(document.getElementById("aside").clientHeight-25-document.getElementById("aside_nav").clientHeight+'px');
-        
-        document.getElementById("aside_main").style.height = document.getElementById("aside").clientHeight-25-document.getElementById("aside_nav").clientHeight+'px';
+				document.getElementById("aside_main").style.height = document.getElementById("aside").clientHeight-25-document.getElementById("aside_nav").clientHeight+'px';
+				that.getRem(750,75);
     };
-    window.addEventListener('scroll', that.handleScroll);
-  },
-	
+		window.addEventListener('scroll', that.handleScroll);
+		window.onload = function(){
+			that.getRem(1000,100)
+		};
+  },	
 };
 </script>
 

@@ -6,8 +6,7 @@ import Vuex from 'vuex'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import http from './http';  //此处问http文件的路径
-
+import http from './http';  //此处问http文件的路径  
 
 Vue.prototype.$http = http;
 Vue.config.productionTip = false;
@@ -46,8 +45,6 @@ const store = new Vuex.Store({
     }
     
 });
-
-
 
 new Vue({
   el: '#app',
