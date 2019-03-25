@@ -7,7 +7,9 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import http from './http';  //此处问http文件的路径  
+import echarts from 'echarts'
 
+Vue.prototype.$echarts = echarts
 Vue.prototype.$http = http;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
@@ -46,11 +48,30 @@ const store = new Vuex.Store({
     
 });
 
+
+
 new Vue({
   el: '#app',
   router,
   components: { App},
   template: '<App/>',
   store,
-})
+});
+
+function getRem(pwidth,prem){
+  var html = document.getElementsByTagName("html")[0];
+  var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+  html.style.fontSize = oWidth/pwidth*prem + "px";
+  console.log(document.body.clientWidth || document.documentElement.clientWidth);
+  console.log(html.style.fontSize);
+};
+
+window.onresize = function(){
+  getRem(750,75);
+};
+window.addEventListener('scroll', that.handleScroll);
+window.onload = function(){
+getRem(750,75);
+console.log(this)
+};
 

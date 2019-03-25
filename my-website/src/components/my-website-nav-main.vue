@@ -23,7 +23,7 @@
 
 <script>
 	export default {
-  		name: 'MyWebsitenavmain',
+  	name: 'MyWebsitenavmain',
 		data: function () {
 		  return {
 		    	content : [{title:"个人简介",subTitle:["基本资料","技术特长","工作经历","教育经历"]},{title:"项目经验",subTitle:["客户欠费预测系统","联通ERP系统设计与实现","流媒体视频质量监测平台设计与实现","3G终端及网络研究"]},{title:"甜品案例",subTitle:["token验证","websocket","Vue"]}],

@@ -8,7 +8,8 @@
 		  			<MyWebsitenav v-bind:class="{ 'aside_main_visiblity' : this.$store.state.data_ }" > </MyWebsiteNav>
 		  			<MyWebsitemenu> </MyWebsiteMenu>
 			  	</div>
-					<div id="aside_main" class="row" style="position: relative;" >		
+					<div id="aside_main" class="row" style="position: relative;" >
+								<graphic></graphic>		
 								<MyWebsitenavmain v-bind:class="{ 'aside_main_display' : this.$store.state.data_ }" style="position: absolute; padding-top:25%"></MyWebsitenavmain>
 								<MyWebsiteMenumain v-bind:class="{ 'aside_main_display' : !this.$store.state.data_ }" style="position: absolute; padding-top:25%"></MyWebsiteMenumain>	
 					</div>	
@@ -34,11 +35,12 @@ import MyWebsitenavmain from './components/my-website-nav-main'
 import MyWebsitemaincase from './components/my-website-main-case'
 import MyWebsitemainintroduction from './components/my-website-main-introduction'
 import MyWebsitemainPorExpe from './components/my-website-main-ProExpe'
+import graphic from './components/graphic'
 
 export default {
   name: 'App',
   
-  components: { Hello:Hello, HelloWorld:HelloWorld, MyWebsitelogo:MyWebsitelogo, MyWebsitenav:MyWebsitenav, MyWebsitemenu:MyWebsitemenu, MyWebsiteMenumain:MyWebsiteMenumain, MyWebsitenavmain:MyWebsitenavmain, MyWebsitemaincase:MyWebsitemaincase, MyWebsitemainintroduction:MyWebsitemainintroduction,MyWebsitemainPorExpe}, 
+  components: { Hello:Hello, HelloWorld:HelloWorld, MyWebsitelogo:MyWebsitelogo, MyWebsitenav:MyWebsitenav, MyWebsitemenu:MyWebsitemenu, MyWebsiteMenumain:MyWebsiteMenumain, MyWebsitenavmain:MyWebsitenavmain, MyWebsitemaincase:MyWebsitemaincase, MyWebsitemainintroduction:MyWebsitemainintroduction,MyWebsitemainPorExpe, graphic:graphic}, 
   
 
   data: function () {
@@ -77,7 +79,7 @@ export default {
     };
 		window.addEventListener('scroll', that.handleScroll);
 		window.onload = function(){
-			that.getRem(1000,100)
+			that.getRem(750,75);
 		};
   },	
 };
