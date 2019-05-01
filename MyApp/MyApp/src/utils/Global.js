@@ -1,0 +1,1 @@
+exports.versionNow = '1.0'

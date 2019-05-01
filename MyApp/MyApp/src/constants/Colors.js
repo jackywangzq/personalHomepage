@@ -1,0 +1,30 @@
+const tintColor = '#2f95dc';
+
+export default {
+  tintColor,
+  tabIconDefault: '#ccc',
+  tabIconSelected: tintColor,
+  tabBar: '#fefefe',
+  errorBackground: 'red',
+  errorText: '#fff',
+  warningBackground: '#EAEB5E',
+  warningText: '#666804',
+  noticeBackground: tintColor,
+  noticeText: '#fff',
+  lightText: '#8590A6',
+  darkText: '#666666',
+  mainColor: '#016DFF',
+  mainLight: '#6a9aff',
+  mainDark: '#0043cb',
+  success: '#0CC436',
+  background: '#F5F5F5',
+  backgroundNew: '#EEEEEE',
+  aliHeader: 'rgba(249,249,249,1)',
+  darkHeader: '#202020',
+  backgroundV2: '#F5F5F5',
+  mainColorV2: '#34A6FA',
+  mainLightV2: '#ddf0fd',
+  unchoosed: '#D2D2D2',
+  disabled: '#E3E3E3',
+  hairlineColor: '#E9E9E9'
+};
